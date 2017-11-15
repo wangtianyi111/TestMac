@@ -44,7 +44,7 @@ public class Name2Id {
 				}
 			}
 		}
-		FileUtil.write("C:\\Users\\wty\\Desktop\\name2Id.csv", s3, true);
+		//FileUtil.write("C:\\Users\\wty\\Desktop\\name2Id.csv", s3, true);
 		List<String> list = new ArrayList<>();
 		
 		
