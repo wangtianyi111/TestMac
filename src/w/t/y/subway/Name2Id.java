@@ -1,8 +1,11 @@
 package w.t.y.subway;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.sun.org.apache.regexp.internal.recompile;
 import com.test1.FileUtil;
 
 public class Name2Id {
@@ -41,9 +44,33 @@ public class Name2Id {
 				}
 			}
 		}
-		System.out.println(s3.length);
-		System.out.println(s3[3]);
-		
 		FileUtil.write("C:\\Users\\wty\\Desktop\\name2Id.csv", s3, true);
+		List<String> list = new ArrayList<>();
+		
+		
+		int i = 0;
+		try {
+			for(;i< s3.length-1;i++) {
+				String[] s4 = s3[i].split(",");
+				list.add(TimeProc.timeDivided(s4[0]) + "");
+				if (s3[i+1] == null) {
+					TimeProc.timeMap(list, "C:\\Users\\wty\\Desktop\\name2Id_result.csv", s4[1]);
+					list.clear();
+					return;
+				}
+				String[] s5 = s3[i+1].split(",");
+				if (s5[1].equals(s4[1]) == false) {
+					TimeProc.timeMap(list, "C:\\Users\\wty\\Desktop\\name2Id_result.csv", s4[1]);
+					list.clear();
+					continue;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("i=" + i);
+		}
+		
+			
 	}
 }
+
